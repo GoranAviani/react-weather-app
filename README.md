@@ -1,5 +1,4 @@
-
-Weather app built in React that retrieves weather from API : https://www.openweathermap.org/
+Weather application built in React that retrieves weather information based on users geolocation.
 
 ## Table of Contents
 
