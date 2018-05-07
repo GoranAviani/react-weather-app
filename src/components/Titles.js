@@ -4,10 +4,7 @@ class Titles extends Component {
     render(){
         return(
             <div>
-                Weather finder
-                <p>
-                    Fidnout temp conditions and more
-                </p>
+                <h1>Location and weather prognosis</h1>
             </div>
 
         );

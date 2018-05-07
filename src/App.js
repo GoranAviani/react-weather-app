@@ -4,46 +4,68 @@ import Titles from "./components/Titles"
 import Form from "./components/Form"
 import Weather from "./components/Weather"
 
-const apiKey = "Your api key"
+const apiKeyWeather = "Your api key"
 
 class App extends Component{
     state ={
-        temperature:undefined,
-        city:undefined,
-        country:undefined,
-        humidity:undefined,
-        description:undefined,
-        error:undefined
+        weatherTemperature:undefined,
+        weatherCity:undefined,
+        weatherCountry:undefined,
+        weatherHumidity:undefined,
+        weatherDescription:undefined,
+        locationRegionName:undefined,
+        locationCountryCode:undefined,
     }
-    getWeather = async (e) => {
-        e.preventDefault(); //prevent default behaviout of app component when the button is pressed
-        const city = e.target.elements.city.value;
-        const country = e.target.elements.country.value;
-        const apiCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${apiKey}&units=metric`);
-        const newData = await apiCall.json();
-        console.log(newData)
+    getWeather = async (varLocCity, varLocCountry) => {
+        console.log(varLocCity)
+        const apiWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${varLocCity},${varLocCountry}&appid=${apiKeyWeather}&units=metric`);
+        const weatherData = await apiWeatherCall.json();
+        console.log(weatherData)
         this.setState({
-            temperature:newData.main.temp,
-            city:newData.name,
-            country:newData.sys.country,
-            humidity:newData.main.humidity,
-            description:newData.weather[0].description,
+            weatherTemperature:weatherData.main.temp,
+            weatherCity:weatherData.name,
+            weatherCountry:weatherData.sys.country,
+            weatherHumidity:weatherData.main.humidity,
+            weatherDescription:weatherData.weather[0].description,
         })
-
     }
 
+    getLocation = async (e) =>{
+        e.preventDefault(); //prevent default behaviout of app component when the button is pressed
+        const apiLocationCall = await fetch (`http://ip-api.com/json`);
+        const locationData = await apiLocationCall.json();
+        console.log(locationData)
+
+        this.setState({
+            locationRegionName:locationData.regionName,
+            locationCountryCode:locationData.countryCode,
+            locationCountry:locationData.country,
+            locationCity:locationData.city,
+        })
+        const varLocCity = locationData.regionName;
+        const varLocCountry = locationData.countryCode; 
+
+        this.getWeather(varLocCity, varLocCountry);
+
+    }
+    
     render()
     {
         return(
             <div>
                 <Titles/>
-                <Form getWeather={this.getWeather}/>
+                <Form getLocation={this.getLocation}/>
                 <Weather 
-                temperature={this.state.temperature}
-                city={this.state.city}
-                country={this.state.country}
-                humidity={this.state.humidity}
-                description={this.state.description}
+                weatherTemperature={this.state.weatherTemperature}
+                weatherCity={this.state.weatherCity}
+                weatherCountry={this.state.weatherCountry}
+                weatherHumidity={this.state.weatherHumidity}
+                weatherDescription={this.state.weatherDescription}
+
+                locationRegionName={this.state.locationRegionName}
+                locationCity={this.state.locationCity}
+                locationCountryCode={this.state.locationCountryCode}
+                locationCountry={this.state.locationCountry}
                 />
             </div>
         );
