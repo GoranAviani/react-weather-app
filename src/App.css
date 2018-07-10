@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css?family=Merriweather:100,200,300,300i,400,400i,700');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Slab:400,700');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400');
+
+body {
+  font-family: "Open Sans", serif;
+
+}
+
+
+.title{
+    margin-top: 50px;
+
+}
+
+.results{
+    margin-top: 50px;
+}
+
+
+.title-container {
+  height: 800px;
+  background: url("images/bg.jpg") center center no-repeat;
+  background-size: cover;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #097492;
+}
+
+.weather_info {
+
+  font-size: 20px;
+  font-weight: 200;
+  letter-spacing: 2px;
+}
+
+.weather_text {
+  color: #f16051;
+  border-bottom: solid 2px rgba(255,255,255,0.06);
+  padding: 20px 0 20px 0;
+  font-weight: 400;
+}
+
+
+
+
+
+
+
+
+
+
+

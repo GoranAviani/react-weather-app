@@ -7,10 +7,10 @@ class Form extends Component {
 
             <form onSubmit ={this.props.getLocation}>
                 <p>
-                	<button>Get Weather</button>
+                	<button className ="btn btn-primary">Get Weather</button>
                 </p>
             </form>
-            
+
         );
     }
 }

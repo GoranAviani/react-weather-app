@@ -53,7 +53,7 @@ class App extends Component{
     render()
     {
         return(
-            <div>
+            <div className="col-md-4 offset-md-4">
                 <Titles/>
                 <Form getLocation={this.getLocation}/>
                 <Weather 
