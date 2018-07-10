@@ -4,7 +4,7 @@ import Titles from "./components/Titles"
 import Form from "./components/Form"
 import Weather from "./components/Weather"
 
-const apiKeyWeather = "Your api key"
+const apiKeyWeather = "3bc16a7ffe748312a4469d64e749de4a"
 
 class App extends Component{
     state ={
@@ -17,10 +17,10 @@ class App extends Component{
         locationCountryCode:undefined,
     }
     getWeather = async (varLocCity, varLocCountry) => {
-        console.log(varLocCity)
+        //console.log(varLocCity)
         const apiWeatherCall = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${varLocCity},${varLocCountry}&appid=${apiKeyWeather}&units=metric`);
         const weatherData = await apiWeatherCall.json();
-        console.log(weatherData)
+        //console.log(weatherData)
         this.setState({
             weatherTemperature:weatherData.main.temp,
             weatherCity:weatherData.name,
@@ -34,7 +34,7 @@ class App extends Component{
         e.preventDefault(); //prevent default behaviout of app component when the button is pressed
         const apiLocationCall = await fetch (`http://ip-api.com/json`);
         const locationData = await apiLocationCall.json();
-        console.log(locationData)
+        //console.log(locationData)
 
         this.setState({
             locationRegionName:locationData.regionName,
@@ -42,11 +42,12 @@ class App extends Component{
             locationCountry:locationData.country,
             locationCity:locationData.city,
         })
+
+        //These two are needen for getting weather
         const varLocCity = locationData.regionName;
         const varLocCountry = locationData.countryCode; 
 
         this.getWeather(varLocCity, varLocCountry);
-
     }
     
     render()
