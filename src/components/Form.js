@@ -4,13 +4,14 @@ import React, { Component } from "react";
 class Form extends Component {
     render(){
         return(
+            <div >
 
             <form onSubmit ={this.props.getLocation}>
                 <p>
-                	<button className ="btn btn-primary">Get Weather</button>
+                	<button >Get Weather</button>
                 </p>
             </form>
-
+            </div>
         );
     }
 }

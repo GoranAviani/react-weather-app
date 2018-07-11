@@ -53,10 +53,17 @@ class App extends Component{
     render()
     {
         return(
-            <div className="col-md-4 offset-md-4">
-                <Titles/>
-                <Form getLocation={this.getLocation}/>
-                <Weather 
+            <div>
+        <div className="wrapper">
+          <div className="main">
+            <div className="container">
+              <div className="row">
+                <div className="col-xs-5 title-container">
+                  <Titles />
+                </div>
+                <div className="col-xs-7 form-container">
+                  <Form getLocation={this.getLocation}/>
+                <Weather
                 weatherTemperature={this.state.weatherTemperature}
                 weatherCity={this.state.weatherCity}
                 weatherCountry={this.state.weatherCountry}
@@ -68,7 +75,14 @@ class App extends Component{
                 locationCountryCode={this.state.locationCountryCode}
                 locationCountry={this.state.locationCountry}
                 />
+                </div>
+              </div>
             </div>
+          </div>
+        </div>
+</div>
+
+
         );
     }
 };
