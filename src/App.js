@@ -53,16 +53,16 @@ class App extends Component{
     render()
     {
         return(
-            <div>
-        <div className="wrapper">
-          <div className="main">
-            <div className="container">
-              <div className="row">
-                <div className="col-xs-5 title-container">
+    <div>
+
+
+            <div className="row">
+                <div className="title-container">
                   <Titles />
-                </div>
-                <div className="col-xs-7 form-container">
                   <Form getLocation={this.getLocation}/>
+                </div>
+                <div className="weather-container">
+
                 <Weather
                 weatherTemperature={this.state.weatherTemperature}
                 weatherCity={this.state.weatherCity}
@@ -78,9 +78,9 @@ class App extends Component{
                 </div>
               </div>
             </div>
-          </div>
-        </div>
-</div>
+
+
+
 
 
         );
